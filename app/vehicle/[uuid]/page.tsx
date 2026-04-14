@@ -9,17 +9,17 @@ import EmptyHistory from '@/components/vehicle/EmptyHistory';
 import type { Vehicle, ServiceTicket } from '@/types';
 
 interface PageProps {
-  params: { uuid: string };
+  params: Promise<{ uuid: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { uuid } = params;
+  const { uuid } = await params;
 
   if (!isValidUuidV4(uuid)) {
     return { title: 'Araç Bulunamadı' };
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: vehicle } = await supabase
     .from('vehicles')
     .select('plate_number, brand_name, model_name')
@@ -38,14 +38,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function VehiclePage({ params }: PageProps) {
-  const { uuid } = params;
+  const { uuid } = await params;
 
   // Validate UUID format before hitting the database
   if (!isValidUuidV4(uuid)) {
     notFound();
   }
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   // Fetch vehicle with customer and shop info (no financial data)
   const { data: vehicle, error: vehicleError } = await supabase
