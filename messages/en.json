@@ -1,0 +1,149 @@
+{
+  "common": {
+    "appName": "Tamir",
+    "appTagline": "Professional Vehicle Service Tracking",
+    "downloadAppStore": "Download on App Store",
+    "downloadPlayStore": "Get it on Google Play",
+    "comingSoon": "Coming Soon"
+  },
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Your Vehicle Service History",
+    "titleHighlight": "Always With You",
+    "description": "With the Tamir app, auto repair shops easily manage vehicle maintenance records. Customers instantly view their service history by scanning a QR code.",
+    "ctaPrimary": "Get Started Free",
+    "ctaSecondary": "How It Works?",
+    "trustedBy": "Used by auto repair shops across Turkey"
+  },
+  "features": {
+    "title": "Why Tamir?",
+    "subtitle": "Features that simplify auto shop management",
+    "qrCode": {
+      "title": "Instant Access via QR Code",
+      "description": "Generate unique QR codes for each vehicle. Customers scan with their phone camera to view service history."
+    },
+    "serviceHistory": {
+      "title": "Detailed Service History",
+      "description": "Record all services performed, parts used, and mileage information."
+    },
+    "customerManagement": {
+      "title": "Customer Management",
+      "description": "Manage customer and vehicle information in one place. Easily access past transactions."
+    },
+    "notifications": {
+      "title": "Maintenance Reminders",
+      "description": "Send automatic reminders to customers when their next service date or mileage is due."
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works?",
+    "subtitle": "Digitize service tracking in 4 steps",
+    "steps": {
+      "step1": {
+        "title": "Download the App",
+        "description": "Download the Tamir app for free from App Store or Google Play."
+      },
+      "step2": {
+        "title": "Set Up Your Shop",
+        "description": "Enter your auto shop details, add customers and vehicles."
+      },
+      "step3": {
+        "title": "Enter Service Records",
+        "description": "Record all services performed, parts used, and notes for each visit."
+      },
+      "step4": {
+        "title": "Share via QR",
+        "description": "Customer scans the QR code to instantly view their service history."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose a plan that fits your business size",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlyDiscount": "25% off",
+    "plans": {
+      "free": {
+        "name": "Free",
+        "price": "₺0",
+        "description": "Perfect starting point for small shops",
+        "features": ["Up to 5 customers", "Up to 5 vehicles", "Up to 15 services/month", "QR code access"]
+      },
+      "basic": {
+        "name": "Basic",
+        "priceMonthly": "₺399",
+        "priceYearly": "₺3,599",
+        "description": "For growing shops",
+        "features": ["Up to 50 customers", "Up to 50 vehicles", "Up to 200 services/month", "QR code access", "Priority support"]
+      },
+      "premium": {
+        "name": "Premium",
+        "priceMonthly": "₺999",
+        "priceYearly": "₺8,999",
+        "description": "Unlimited for large shops",
+        "features": ["Unlimited customers", "Unlimited vehicles", "Unlimited service records", "QR code access", "Priority support", "Early access"]
+      }
+    },
+    "cta": "Get Started Now"
+  },
+  "cta": {
+    "title": "Digitize Your Shop",
+    "description": "Thousands of auto repair shops are increasing customer satisfaction with Tamir. Join them today.",
+    "button": "Try It Free"
+  },
+  "vehicle": {
+    "title": "Vehicle Service History",
+    "plate": "Plate",
+    "brand": "Brand",
+    "model": "Model",
+    "year": "Year",
+    "owner": "Owner",
+    "serviceHistory": "Service History",
+    "noHistory": "No service records yet",
+    "noHistoryDescription": "No service records have been created for this vehicle yet.",
+    "serviceDate": "Service Date",
+    "mileage": "Mileage",
+    "complaint": "Customer Complaint",
+    "diagnosis": "Diagnosis",
+    "nextService": "Next Service",
+    "status": {
+      "PENDING": "Pending",
+      "IN_PROGRESS": "In Progress",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "poweredBy": "Created with Tamir app",
+    "downloadApp": "Use it too"
+  },
+  "errors": {
+    "vehicleNotFound": "Vehicle Not Found",
+    "vehicleNotFoundDescription": "The vehicle you are looking for was not found or the QR code is invalid.",
+    "serverError": "An error occurred. Please try again later."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated"
+    },
+    "support": {
+      "title": "Support",
+      "email": "Email"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "support": "Support"
+  }
+}

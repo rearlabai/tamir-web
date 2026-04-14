@@ -1,0 +1,149 @@
+{
+  "common": {
+    "appName": "Tamir",
+    "appTagline": "Profesyonel Araç Servis Takibi",
+    "downloadAppStore": "App Store'dan İndir",
+    "downloadPlayStore": "Google Play'den İndir",
+    "comingSoon": "Yakında"
+  },
+  "nav": {
+    "features": "Özellikler",
+    "howItWorks": "Nasıl Çalışır",
+    "pricing": "Fiyatlandırma",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "Aracınızın Servis Geçmişi",
+    "titleHighlight": "Her Zaman Yanınızda",
+    "description": "Tamir uygulaması ile oto servisler, araç bakım kayıtlarını kolayca yönetir. Müşteriler QR kod ile servis geçmişlerini anında görüntüler.",
+    "ctaPrimary": "Ücretsiz Başlayın",
+    "ctaSecondary": "Nasıl Çalışır?",
+    "trustedBy": "Türkiye genelinde oto servisler tarafından kullanılmaktadır"
+  },
+  "features": {
+    "title": "Neden Tamir?",
+    "subtitle": "Oto servis yönetimini kolaylaştıran özellikler",
+    "qrCode": {
+      "title": "QR Kod ile Anlık Erişim",
+      "description": "Her araca özel QR kod oluşturun. Müşteriler telefon kameralarıyla okutarak servis geçmişlerini görüntülesin."
+    },
+    "serviceHistory": {
+      "title": "Detaylı Servis Geçmişi",
+      "description": "Yapılan işlemleri, kullanılan parçaları ve km bilgilerini kayıt altına alın."
+    },
+    "customerManagement": {
+      "title": "Müşteri Yönetimi",
+      "description": "Müşteri ve araç bilgilerini tek yerden yönetin. Geçmiş işlemlere kolayca erişin."
+    },
+    "notifications": {
+      "title": "Bakım Hatırlatmaları",
+      "description": "Bir sonraki servis tarihi veya km'si geldiğinde müşterilere otomatik hatırlatma gönderin."
+    }
+  },
+  "howItWorks": {
+    "title": "Nasıl Çalışır?",
+    "subtitle": "4 adımda servis takibini dijitalleştirin",
+    "steps": {
+      "step1": {
+        "title": "Uygulamayı İndirin",
+        "description": "App Store veya Google Play'den Tamir uygulamasını ücretsiz indirin."
+      },
+      "step2": {
+        "title": "Servisinizi Kurun",
+        "description": "Oto servis bilgilerinizi girin, müşteri ve araç ekleyin."
+      },
+      "step3": {
+        "title": "Servis Kayıtlarını Girin",
+        "description": "Her servis için yapılan işlemleri, parçaları ve notları kaydedin."
+      },
+      "step4": {
+        "title": "QR ile Paylaşın",
+        "description": "Müşteriniz QR kodu okutarak servis geçmişini anında görüntülesin."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Fiyatlandırma",
+    "subtitle": "İşletmenizin büyüklüğüne göre plan seçin",
+    "monthly": "Aylık",
+    "yearly": "Yıllık",
+    "yearlyDiscount": "%25 indirim",
+    "plans": {
+      "free": {
+        "name": "Ücretsiz",
+        "price": "₺0",
+        "description": "Küçük servisler için ideal başlangıç",
+        "features": ["5 müşteriye kadar", "5 araca kadar", "Ayda 15 servise kadar", "QR kod erişimi"]
+      },
+      "basic": {
+        "name": "Temel",
+        "priceMonthly": "₺399",
+        "priceYearly": "₺3.599",
+        "description": "Büyüyen servisler için",
+        "features": ["50 müşteriye kadar", "50 araca kadar", "Ayda 200 servise kadar", "QR kod erişimi", "Öncelikli destek"]
+      },
+      "premium": {
+        "name": "Premium",
+        "priceMonthly": "₺999",
+        "priceYearly": "₺8.999",
+        "description": "Büyük servisler için sınırsız",
+        "features": ["Sınırsız müşteri", "Sınırsız araç", "Sınırsız servis kaydı", "QR kod erişimi", "Öncelikli destek", "Erken erişim"]
+      }
+    },
+    "cta": "Hemen Başlayın"
+  },
+  "cta": {
+    "title": "Servisinizi Dijitalleştirin",
+    "description": "Binlerce oto servis Tamir ile müşteri memnuniyetini artırıyor. Siz de başlayın.",
+    "button": "Ücretsiz Deneyin"
+  },
+  "vehicle": {
+    "title": "Araç Servis Geçmişi",
+    "plate": "Plaka",
+    "brand": "Marka",
+    "model": "Model",
+    "year": "Yıl",
+    "owner": "Araç Sahibi",
+    "serviceHistory": "Servis Geçmişi",
+    "noHistory": "Henüz servis kaydı bulunmuyor",
+    "noHistoryDescription": "Bu araç için henüz servis kaydı oluşturulmamış.",
+    "serviceDate": "Servis Tarihi",
+    "mileage": "Kilometre",
+    "complaint": "Müşteri Şikayeti",
+    "diagnosis": "Teşhis",
+    "nextService": "Sonraki Servis",
+    "status": {
+      "PENDING": "Beklemede",
+      "IN_PROGRESS": "Devam Ediyor",
+      "COMPLETED": "Tamamlandı",
+      "CANCELLED": "İptal Edildi"
+    },
+    "poweredBy": "Tamir uygulaması ile oluşturuldu",
+    "downloadApp": "Siz de kullanın"
+  },
+  "errors": {
+    "vehicleNotFound": "Araç Bulunamadı",
+    "vehicleNotFoundDescription": "Aradığınız araç bulunamadı veya QR kod geçersiz.",
+    "serverError": "Bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "lastUpdated": "Son güncelleme"
+    },
+    "terms": {
+      "title": "Kullanım Koşulları",
+      "lastUpdated": "Son güncelleme"
+    },
+    "support": {
+      "title": "Destek",
+      "email": "E-posta"
+    }
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları",
+    "support": "Destek"
+  }
+}
