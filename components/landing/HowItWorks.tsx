@@ -3,7 +3,7 @@ const steps = [
     number: '01',
     title: 'Uygulamayı İndirin',
     description:
-      'App Store veya Google Play\'den Tamir uygulamasını ücretsiz indirin.',
+      'App Store veya Google Play\'den AutoLog uygulamasını ücretsiz indirin.',
   },
   {
     number: '02',

@@ -13,7 +13,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">T</span>
               </div>
-              <span className="font-bold text-xl text-white">Tamir</span>
+              <span className="font-bold text-xl text-white">AutoLog</span>
             </div>
             <p className="text-sm">
               Profesyonel araç servis takip uygulaması. Oto servisler için
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-          <p>© {currentYear} Tamir. Tüm hakları saklıdır.</p>
+          <p>© {currentYear} AutoLog. Tüm hakları saklıdır.</p>
         </div>
       </div>
     </footer>

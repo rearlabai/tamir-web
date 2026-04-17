@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Destek',
-  description: 'Tamir uygulaması destek sayfası. Sorularınız için bizimle iletişime geçin.',
+  description: 'AutoLog uygulaması destek sayfası. Sorularınız için bizimle iletişime geçin.',
 };
 
 export default function SupportPage() {
@@ -38,10 +38,10 @@ export default function SupportPage() {
                 <div>
                   <p className="text-sm text-gray-500">E-posta</p>
                   <a
-                    href="mailto:destek@tamirapp.com"
+                    href="mailto:destek@rearlab.ai"
                     className="font-medium text-primary-600 hover:text-primary-700"
                   >
-                    destek@tamirapp.com
+                    destek@rearlab.ai
                   </a>
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function SupportPage() {
               {[
                 {
                   q: 'Uygulamayı nasıl indirebilirim?',
-                  a: 'Tamir uygulamasını App Store (iOS) veya Google Play (Android) üzerinden ücretsiz indirebilirsiniz.',
+                  a: 'AutoLog uygulamasını App Store (iOS) veya Google Play (Android) üzerinden ücretsiz indirebilirsiniz.',
                 },
                 {
                   q: 'Aboneliğimi nasıl iptal edebilirim?',

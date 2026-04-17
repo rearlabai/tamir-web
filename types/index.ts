@@ -1,4 +1,4 @@
-// Domain Types for AutoServiceTracker Web
+// Domain Types for AutoLog Web
 
 export interface Shop {
   id: string;

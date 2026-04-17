@@ -18,7 +18,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Tamir uygulaması ile oto servisler, araç bakım kayıtlarını
+              AutoLog uygulaması ile oto servisler, araç bakım kayıtlarını
               kolayca yönetir. Müşteriler QR kod ile servis geçmişlerini
               anında görüntüler.
             </p>
@@ -53,7 +53,7 @@ export default function Hero() {
                   <div className="w-16 h-16 bg-primary-600 rounded-2xl mx-auto mb-4 flex items-center justify-center">
                     <span className="text-white font-bold text-2xl">T</span>
                   </div>
-                  <p className="text-sm font-medium text-white">Tamir</p>
+                  <p className="text-sm font-medium text-white">AutoLog</p>
                   <p className="text-xs mt-1">Uygulama Görseli</p>
                 </div>
               </div>

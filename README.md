@@ -1,4 +1,4 @@
-# Tamir Web - Next.js Frontend
+# AutoLog Web - Next.js Frontend
 
 Oto servis takip uygulaması için profesyonel web sitesi. QR kod ile araç servis geçmişi görüntüleme ve landing page.
 
@@ -24,7 +24,7 @@ cp .env.local.example .env.local
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
-NEXT_PUBLIC_APP_URL=https://tamirapp.com
+NEXT_PUBLIC_APP_URL=https://autolog.vercel.app
 ```
 
 **Önemli:** Mobil uygulama ile aynı Supabase projesini kullan.
@@ -61,8 +61,8 @@ http://localhost:3000 adresinde açılacak.
 ### 1. GitHub'a Push
 
 ```bash
-git add tamir-web/
-git commit -m "Add tamir-web Next.js project"
+git add autolog-web/
+git commit -m "Add autolog-web Next.js project"
 git push
 ```
 
@@ -70,7 +70,7 @@ git push
 
 1. https://vercel.com adresine git
 2. **Import Project** > GitHub repo seç
-3. **Root Directory** değiştir: `tamir-web`
+3. **Root Directory** değiştir: `autolog-web`
 4. **Environment Variables** ekle:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -81,7 +81,7 @@ git push
 
 Vercel Dashboard:
 - **Settings** > **Domains**
-- `tamirapp.com` ekle
+- `autolog.vercel.app` ekle
 - DNS kayıtlarını (A record veya CNAME) güncelle
 
 ## Güvenlik
@@ -116,7 +116,7 @@ Vercel Dashboard:
 ## Proje Yapısı
 
 ```
-tamir-web/
+autolog-web/
 ├── app/                          # Next.js App Router
 │   ├── layout.tsx                # Root layout + metadata
 │   ├── page.tsx                  # Landing page
@@ -144,7 +144,7 @@ QR kod URL'sini güncelle:
 
 **src/app/public/[qrUuid].tsx** (veya QR generator servis):
 ```typescript
-const qrUrl = `https://tamirapp.com/vehicle/${vehicle.qr_uuid}`;
+const qrUrl = `https://autolog.vercel.app/vehicle/${vehicle.qr_uuid}`;
 ```
 
 ## Test
@@ -197,7 +197,7 @@ for i in {1..65}; do curl http://localhost:3000/vehicle/test; done
 
 - [ ] Supabase migration uygulandı (`20260208_public_qr_access.sql`)
 - [ ] Environment variables Vercel'de set edildi
-- [ ] Domain (tamirapp.com) bağlandı
+- [ ] Domain (autolog.vercel.app) bağlandı
 - [ ] Security headers test edildi (securityheaders.com)
 - [ ] QR page test edildi (valid + invalid UUID)
 - [ ] Rate limiting test edildi
@@ -206,4 +206,4 @@ for i in {1..65}; do curl http://localhost:3000/vehicle/test; done
 
 ## Lisans
 
-Proprietary - Tamir App
+Proprietary - AutoLog

@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Tamir",
+    "appName": "AutoLog",
     "appTagline": "Profesyonel Araç Servis Takibi",
     "downloadAppStore": "App Store'dan İndir",
     "downloadPlayStore": "Google Play'den İndir",
@@ -15,13 +15,13 @@
   "hero": {
     "title": "Aracınızın Servis Geçmişi",
     "titleHighlight": "Her Zaman Yanınızda",
-    "description": "Tamir uygulaması ile oto servisler, araç bakım kayıtlarını kolayca yönetir. Müşteriler QR kod ile servis geçmişlerini anında görüntüler.",
+    "description": "AutoLog uygulaması ile oto servisler, araç bakım kayıtlarını kolayca yönetir. Müşteriler QR kod ile servis geçmişlerini anında görüntüler.",
     "ctaPrimary": "Ücretsiz Başlayın",
     "ctaSecondary": "Nasıl Çalışır?",
     "trustedBy": "Türkiye genelinde oto servisler tarafından kullanılmaktadır"
   },
   "features": {
-    "title": "Neden Tamir?",
+    "title": "Neden AutoLog?",
     "subtitle": "Oto servis yönetimini kolaylaştıran özellikler",
     "qrCode": {
       "title": "QR Kod ile Anlık Erişim",
@@ -46,7 +46,7 @@
     "steps": {
       "step1": {
         "title": "Uygulamayı İndirin",
-        "description": "App Store veya Google Play'den Tamir uygulamasını ücretsiz indirin."
+        "description": "App Store veya Google Play'den AutoLog uygulamasını ücretsiz indirin."
       },
       "step2": {
         "title": "Servisinizi Kurun",
@@ -94,7 +94,7 @@
   },
   "cta": {
     "title": "Servisinizi Dijitalleştirin",
-    "description": "Binlerce oto servis Tamir ile müşteri memnuniyetini artırıyor. Siz de başlayın.",
+    "description": "Binlerce oto servis AutoLog ile müşteri memnuniyetini artırıyor. Siz de başlayın.",
     "button": "Ücretsiz Deneyin"
   },
   "vehicle": {
@@ -118,7 +118,7 @@
       "COMPLETED": "Tamamlandı",
       "CANCELLED": "İptal Edildi"
     },
-    "poweredBy": "Tamir uygulaması ile oluşturuldu",
+    "poweredBy": "AutoLog uygulaması ile oluşturuldu",
     "downloadApp": "Siz de kullanın"
   },
   "errors": {

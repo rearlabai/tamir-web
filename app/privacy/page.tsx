@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Gizlilik Politikası',
-  description: 'Tamir uygulaması gizlilik politikası ve KVKK kapsamında kişisel veri işleme bilgilendirmesi.',
+  description: 'AutoLog uygulaması gizlilik politikası ve KVKK kapsamında kişisel veri işleme bilgilendirmesi.',
 };
 
 export default function PrivacyPage() {
@@ -25,7 +25,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Giriş</h2>
               <p className="text-gray-600">
-                Tamir uygulaması (&quot;Uygulama&quot;), oto servis işletmelerinin araç bakım kayıtlarını
+                AutoLog uygulaması (&quot;Uygulama&quot;), oto servis işletmelerinin araç bakım kayıtlarını
                 dijital ortamda yönetmelerine yardımcı olmak amacıyla geliştirilmiştir. Bu gizlilik politikası,
                 Uygulama aracılığıyla toplanan kişisel verilerin nasıl işlendiğini açıklamaktadır.
               </p>

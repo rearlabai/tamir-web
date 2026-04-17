@@ -131,7 +131,7 @@ export default async function VehiclePage({ params }: PageProps) {
             <div className="w-7 h-7 bg-primary-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xs">T</span>
             </div>
-            <span className="font-bold text-gray-900">Tamir</span>
+            <span className="font-bold text-gray-900">AutoLog</span>
           </Link>
           <span className="text-xs text-gray-500">Servis Geçmişi</span>
         </div>
@@ -160,7 +160,7 @@ export default async function VehiclePage({ params }: PageProps) {
         {/* App promotion */}
         <div className="mt-8 bg-primary-50 rounded-2xl p-6 text-center">
           <p className="text-sm text-gray-600 mb-3">
-            Tamir uygulaması ile oluşturuldu
+            AutoLog uygulaması ile oluşturuldu
           </p>
           <a
             href="#"

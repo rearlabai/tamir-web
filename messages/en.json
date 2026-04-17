@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Tamir",
+    "appName": "AutoLog",
     "appTagline": "Professional Vehicle Service Tracking",
     "downloadAppStore": "Download on App Store",
     "downloadPlayStore": "Get it on Google Play",
@@ -15,13 +15,13 @@
   "hero": {
     "title": "Your Vehicle Service History",
     "titleHighlight": "Always With You",
-    "description": "With the Tamir app, auto repair shops easily manage vehicle maintenance records. Customers instantly view their service history by scanning a QR code.",
+    "description": "With the AutoLog app, auto repair shops easily manage vehicle maintenance records. Customers instantly view their service history by scanning a QR code.",
     "ctaPrimary": "Get Started Free",
     "ctaSecondary": "How It Works?",
     "trustedBy": "Used by auto repair shops across Turkey"
   },
   "features": {
-    "title": "Why Tamir?",
+    "title": "Why AutoLog?",
     "subtitle": "Features that simplify auto shop management",
     "qrCode": {
       "title": "Instant Access via QR Code",
@@ -46,7 +46,7 @@
     "steps": {
       "step1": {
         "title": "Download the App",
-        "description": "Download the Tamir app for free from App Store or Google Play."
+        "description": "Download the AutoLog app for free from App Store or Google Play."
       },
       "step2": {
         "title": "Set Up Your Shop",
@@ -94,7 +94,7 @@
   },
   "cta": {
     "title": "Digitize Your Shop",
-    "description": "Thousands of auto repair shops are increasing customer satisfaction with Tamir. Join them today.",
+    "description": "Thousands of auto repair shops are increasing customer satisfaction with AutoLog. Join them today.",
     "button": "Try It Free"
   },
   "vehicle": {
@@ -118,7 +118,7 @@
       "COMPLETED": "Completed",
       "CANCELLED": "Cancelled"
     },
-    "poweredBy": "Created with Tamir app",
+    "poweredBy": "Created with AutoLog app",
     "downloadApp": "Use it too"
   },
   "errors": {

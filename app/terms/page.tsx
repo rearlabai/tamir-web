@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Kullanım Koşulları',
-  description: 'Tamir uygulaması kullanım koşulları ve hizmet şartları.',
+  description: 'AutoLog uygulaması kullanım koşulları ve hizmet şartları.',
 };
 
 export default function TermsPage() {
@@ -24,7 +24,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Hizmet Tanımı</h2>
             <p className="text-gray-600">
-              Tamir, oto servis işletmeleri için tasarlanmış bir araç servis takip uygulamasıdır.
+              AutoLog, oto servis işletmeleri için tasarlanmış bir araç servis takip uygulamasıdır.
               Uygulama; müşteri yönetimi, araç kaydı, servis geçmişi takibi ve QR kod paylaşımı
               hizmetleri sunmaktadır.
             </p>
@@ -52,7 +52,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-semibold text-gray-900 mb-3">4. Sorumluluk Sınırlaması</h2>
             <p className="text-gray-600">
-              Tamir, sisteme girilen verilerin doğruluğundan sorumlu değildir.
+              AutoLog, sisteme girilen verilerin doğruluğundan sorumlu değildir.
               Kullanıcı hatalarından kaynaklanan veri kayıpları için sorumluluk kabul edilmemektedir.
               Teknik sorunlar nedeniyle oluşabilecek kesintiler için ücretsiz plan kullanıcılarına
               tazminat ödenmez.

@@ -8,7 +8,7 @@ export default function CTASection() {
           Servisinizi Dijitalleştirin
         </h2>
         <p className="text-xl text-primary-100 mb-8">
-          Binlerce oto servis Tamir ile müşteri memnuniyetini artırıyor. Siz de
+          Binlerce oto servis AutoLog ile müşteri memnuniyetini artırıyor. Siz de
           başlayın.
         </p>
 

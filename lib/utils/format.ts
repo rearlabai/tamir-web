@@ -1,4 +1,4 @@
-// Formatting utilities for AutoServiceTracker Web
+// Formatting utilities for AutoLog Web
 
 /**
  * Format a date string to a localized display string
