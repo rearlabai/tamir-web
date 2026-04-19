@@ -12,6 +12,53 @@ interface PageProps {
   params: Promise<{ uuid: string }>;
 }
 
+/**
+ * Public QR page payload — matches the shape returned by the
+ * `get_public_vehicle_page(qr_uuid)` Supabase RPC (SECURITY DEFINER).
+ * Anonymous users ONLY access vehicle data through this RPC; direct table
+ * queries are blocked by RLS.
+ */
+interface PublicPagePayload {
+  vehicle: {
+    id: string;
+    plate_number: string;
+    brand_name: string;
+    model_name: string;
+    engine_name: string;
+    fuel_type: string;
+    manufacturing_year: number;
+    trim_name: string | null;
+    vehicle_type?: string;
+    qr_uuid: string;
+    created_at: string;
+  };
+  customer: { full_name: string; phone_number: string } | null;
+  shop: { id: string; name: string; phone: string } | null;
+  services: Array<{
+    id: string;
+    status: string;
+    current_km: number;
+    customer_complaint: string | null;
+    diagnosis_notes: string | null;
+    next_service_date: string | null;
+    next_service_km: number | null;
+    created_at: string;
+    ticket_items: Array<{ description: string; quantity: number }>;
+  }>;
+}
+
+async function fetchPublicPage(uuid: string): Promise<PublicPagePayload | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc('get_public_vehicle_page', {
+    p_qr_uuid: uuid,
+  });
+  if (error) {
+    console.error('[public QR] RPC error:', error);
+    return null;
+  }
+  return (data as PublicPagePayload | null) ?? null;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { uuid } = await params;
 
@@ -19,108 +66,72 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Araç Bulunamadı' };
   }
 
-  const supabase = await createClient();
-  const { data: vehicle } = await supabase
-    .from('vehicles')
-    .select('plate_number, brand_name, model_name')
-    .eq('qr_uuid', uuid)
-    .single();
-
-  if (!vehicle) {
+  const payload = await fetchPublicPage(uuid);
+  if (!payload?.vehicle) {
     return { title: 'Araç Bulunamadı' };
   }
 
+  const v = payload.vehicle;
   return {
-    title: `${vehicle.plate_number} - ${vehicle.brand_name} ${vehicle.model_name}`,
-    description: `${vehicle.brand_name} ${vehicle.model_name} (${vehicle.plate_number}) servis geçmişi`,
-    robots: { index: false, follow: false }, // QR pages should not be indexed
+    title: `${v.plate_number} - ${v.brand_name} ${v.model_name}`,
+    description: `${v.brand_name} ${v.model_name} (${v.plate_number}) servis geçmişi`,
+    robots: { index: false, follow: false },
   };
 }
 
 export default async function VehiclePage({ params }: PageProps) {
   const { uuid } = await params;
 
-  // Validate UUID format before hitting the database
+  // 1. Validate UUID format before hitting the DB (prevents enumeration noise)
   if (!isValidUuidV4(uuid)) {
     notFound();
   }
 
-  const supabase = await createClient();
-
-  // Fetch vehicle with customer and shop info (no financial data)
-  const { data: vehicle, error: vehicleError } = await supabase
-    .from('vehicles')
-    .select(
-      `
-      id,
-      plate_number,
-      brand_name,
-      model_name,
-      engine_name,
-      fuel_type,
-      manufacturing_year,
-      trim_name,
-      qr_uuid,
-      created_at,
-      customers!inner (
-        id,
-        full_name,
-        phone_number
-      ),
-      shops!inner (
-        id,
-        name,
-        phone_number,
-        address
-      )
-    `
-    )
-    .eq('qr_uuid', uuid)
-    .single();
-
-  if (vehicleError || !vehicle) {
+  // 2. Single RPC call — all data comes from SECURITY DEFINER function
+  //    which enforces proper scoping. No direct table access from anon.
+  const payload = await fetchPublicPage(uuid);
+  if (!payload?.vehicle) {
     notFound();
   }
 
-  // Fetch service history - ONLY non-financial fields
-  const { data: tickets } = await supabase
-    .from('service_tickets')
-    .select(
-      `
-      id,
-      status,
-      current_km,
-      customer_complaint,
-      diagnosis_notes,
-      next_service_date,
-      next_service_km,
-      created_at,
-      completed_at
-    `
-    )
-    .eq('vehicle_id', vehicle.id)
-    .order('created_at', { ascending: false })
-    .limit(50);
-
-  // Map Supabase response to our domain types
+  // 3. Map to domain types
   const vehicleData: Vehicle = {
-    id: vehicle.id,
-    shop_id: (vehicle.shops as unknown as { id: string }).id,
-    customer_id: (vehicle.customers as unknown as { id: string }).id,
-    plate_number: vehicle.plate_number,
-    brand_name: vehicle.brand_name,
-    model_name: vehicle.model_name,
-    engine_name: vehicle.engine_name,
-    fuel_type: vehicle.fuel_type,
-    manufacturing_year: vehicle.manufacturing_year,
-    trim_name: vehicle.trim_name,
-    qr_uuid: vehicle.qr_uuid,
-    created_at: vehicle.created_at,
-    customer: vehicle.customers as unknown as Vehicle['customer'],
-    shop: vehicle.shops as unknown as Vehicle['shop'],
-  };
+    id: payload.vehicle.id,
+    shop_id: payload.shop?.id ?? '',
+    customer_id: '', // not exposed on public page
+    plate_number: payload.vehicle.plate_number,
+    brand_name: payload.vehicle.brand_name,
+    model_name: payload.vehicle.model_name,
+    engine_name: payload.vehicle.engine_name,
+    fuel_type: payload.vehicle.fuel_type,
+    manufacturing_year: payload.vehicle.manufacturing_year,
+    trim_name: payload.vehicle.trim_name,
+    qr_uuid: payload.vehicle.qr_uuid,
+    created_at: payload.vehicle.created_at,
+    customer: payload.customer
+      ? { full_name: payload.customer.full_name, phone_number: payload.customer.phone_number }
+      : undefined,
+    shop: payload.shop
+      ? { id: payload.shop.id, name: payload.shop.name, phone_number: payload.shop.phone, address: null }
+      : undefined,
+  } as Vehicle;
 
-  const serviceHistory: ServiceTicket[] = (tickets || []) as ServiceTicket[];
+  const serviceHistory: ServiceTicket[] = (payload.services ?? []).map((s) => ({
+    id: s.id,
+    status: s.status,
+    current_km: s.current_km,
+    customer_complaint: s.customer_complaint,
+    diagnosis_notes: s.diagnosis_notes,
+    next_service_date: s.next_service_date,
+    next_service_km: s.next_service_km,
+    created_at: s.created_at,
+    // Financial fields intentionally blank on public page
+    total_price: null,
+    paid_amount: 0,
+    remaining_amount: 0,
+    completed_at: null,
+    ticket_items: s.ticket_items,
+  })) as unknown as ServiceTicket[];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -129,7 +140,7 @@ export default async function VehiclePage({ params }: PageProps) {
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-7 h-7 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs">T</span>
+              <span className="text-white font-bold text-xs">A</span>
             </div>
             <span className="font-bold text-gray-900">AutoLog</span>
           </Link>
@@ -142,9 +153,7 @@ export default async function VehiclePage({ params }: PageProps) {
         <VehicleHeader vehicle={vehicleData} />
 
         <div className="mt-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Servis Geçmişi
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Servis Geçmişi</h2>
 
           {serviceHistory.length === 0 ? (
             <EmptyHistory />
@@ -157,18 +166,9 @@ export default async function VehiclePage({ params }: PageProps) {
           )}
         </div>
 
-        {/* App promotion */}
-        <div className="mt-8 bg-primary-50 rounded-2xl p-6 text-center">
-          <p className="text-sm text-gray-600 mb-3">
-            AutoLog uygulaması ile oluşturuldu
-          </p>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors"
-          >
-            Siz de kullanın
-          </a>
-        </div>
+        <p className="text-center text-xs text-gray-400 mt-8 pb-4">
+          Bu sayfa atölyeniz tarafından paylaşılmıştır. Finansal detaylar gösterilmez.
+        </p>
       </div>
     </div>
   );
