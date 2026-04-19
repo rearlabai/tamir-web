@@ -16,8 +16,8 @@ export default function Footer() {
               <span className="font-bold text-xl text-white">AutoLog</span>
             </div>
             <p className="text-sm">
-              Profesyonel araç servis takip uygulaması. Oto servisler için
-              dijital çözüm.
+              Sanayi ustaları için AI destekli dijital servis defteri.
+              Fotoğraf, barkod, teşhis — hepsi tek uygulamada.
             </p>
           </div>
 
@@ -28,6 +28,11 @@ export default function Footer() {
               <li>
                 <Link href="#features" className="hover:text-white transition-colors">
                   Özellikler
+                </Link>
+              </li>
+              <li>
+                <Link href="#how-it-works" className="hover:text-white transition-colors">
+                  Nasıl Çalışır
                 </Link>
               </li>
               <li>
@@ -54,7 +59,17 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/terms" className="hover:text-white transition-colors">
-                  Kullanım Koşulları
+                  Kullanım Şartları
+                </Link>
+              </li>
+              <li>
+                <Link href="/kvkk" className="hover:text-white transition-colors">
+                  KVKK Aydınlatma Metni
+                </Link>
+              </li>
+              <li>
+                <Link href="/cookies" className="hover:text-white transition-colors">
+                  Çerez Politikası
                 </Link>
               </li>
               <li>

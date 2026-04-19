@@ -2,14 +2,18 @@ import Link from 'next/link';
 
 export default function CTASection() {
   return (
-    <section className="py-20 bg-primary-600">
+    <section className="py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-violet-700">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Servisinizi Dijitalleştirin
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur text-white text-sm font-medium px-4 py-2 rounded-full mb-6">
+          🚀 Hemen Başla
+        </div>
+
+        <h2 className="text-3xl sm:text-5xl font-bold text-white mb-4">
+          Ustanın Yeni Sağ Kolu
         </h2>
-        <p className="text-xl text-primary-100 mb-8">
-          Binlerce oto servis AutoLog ile müşteri memnuniyetini artırıyor. Siz de
-          başlayın.
+        <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          Kâğıt defteri at. AI asistanlı, fotoğraflı, barkodlu — profesyonel
+          dijital servis defteri. Ücretsiz başla, limit biterse yükselt.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -32,6 +36,10 @@ export default function CTASection() {
             Google Play&apos;den İndir
           </Link>
         </div>
+
+        <p className="text-sm text-primary-200 mt-6">
+          Ücretsiz plan · Kart bilgisi gerekmez · İstediğin an iptal
+        </p>
       </div>
     </section>
   );

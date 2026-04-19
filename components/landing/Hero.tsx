@@ -9,19 +9,34 @@ export default function Hero() {
           <div>
             <div className="inline-flex items-center gap-2 bg-primary-100 text-primary-700 text-sm font-medium px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-primary-600 rounded-full animate-pulse" />
-              Türkiye genelinde oto servisler tarafından kullanılmaktadır
+              Sanayi ustaları için dijital servis defteri
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Aracınızın Servis Geçmişi{' '}
-              <span className="text-primary-600">Her Zaman Yanınızda</span>
+              Kâğıt defteri bırak, {' '}
+              <span className="text-primary-600">AI asistanlı servise geç</span>
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              AutoLog uygulaması ile oto servisler, araç bakım kayıtlarını
-              kolayca yönetir. Müşteriler QR kod ile servis geçmişlerini
-              anında görüntüler.
+              AutoLog; sanayi ustaları için tasarlanmış, AI destekli dijital
+              servis defteri. Fotoğraftan hasar analizi, barkodla parça takibi,
+              araç sağlık raporu ve tek tıkla servis girişi — hepsi telefonunda.
             </p>
+
+            <div className="flex flex-wrap gap-3 mb-8">
+              <span className="inline-flex items-center gap-1.5 bg-violet-50 text-violet-700 text-xs font-medium px-3 py-1.5 rounded-full border border-violet-200">
+                🤖 AI Usta Asistanı
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-medium px-3 py-1.5 rounded-full border border-emerald-200">
+                📸 Foto & Video Kayıt
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-medium px-3 py-1.5 rounded-full border border-amber-200">
+                📊 Araç Sağlık Raporu
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-sky-50 text-sky-700 text-xs font-medium px-3 py-1.5 rounded-full border border-sky-200">
+                🔍 Barkod Okuma
+              </span>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4" id="download">
               <Link
@@ -43,23 +58,80 @@ export default function Hero() {
                 Google Play
               </Link>
             </div>
+
+            <p className="text-sm text-gray-500 mt-4">
+              Ücretsiz başla. Kart bilgisi gerekmez.
+            </p>
           </div>
 
-          {/* App mockup placeholder */}
+          {/* App mockup */}
           <div className="hidden lg:flex items-center justify-center">
             <div className="relative">
-              <div className="w-64 h-[520px] bg-gray-900 rounded-[40px] shadow-2xl flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <div className="w-16 h-16 bg-primary-600 rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-2xl">T</span>
+              {/* Phone frame */}
+              <div className="w-72 h-[580px] bg-gray-900 rounded-[40px] shadow-2xl p-3">
+                <div className="w-full h-full bg-gradient-to-br from-primary-50 to-white rounded-[32px] overflow-hidden relative">
+                  {/* Mock content */}
+                  <div className="p-5 pt-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <p className="text-xs text-gray-500">34 ABC 123</p>
+                        <p className="font-bold text-gray-900">Ford Focus 1.6</p>
+                      </div>
+                      <div className="w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xl">🤖</span>
+                      </div>
+                    </div>
+
+                    {/* Health card */}
+                    <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-3 mb-3">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-amber-700 text-xs font-bold">⚠️ DİKKAT</span>
+                        <span className="text-[10px] text-amber-600">AI Sağlık Raporu</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-1 text-center text-xs">
+                        <div>
+                          <p className="font-bold text-red-600">2</p>
+                          <p className="text-[9px] text-gray-500">Sorun</p>
+                        </div>
+                        <div>
+                          <p className="font-bold text-blue-600">1</p>
+                          <p className="text-[9px] text-gray-500">Yaklaşan</p>
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-700">12</p>
+                          <p className="text-[9px] text-gray-500">Servis</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Chat bubble */}
+                    <div className="bg-violet-50 rounded-xl p-3 mb-3">
+                      <div className="flex items-center gap-1 mb-1">
+                        <span className="text-violet-700 text-[10px] font-bold">🤖 Usta AI</span>
+                      </div>
+                      <p className="text-xs text-gray-700 leading-relaxed">
+                        Fotoğrafta triger kayışı aşınma tespit ettim. Son değişim
+                        125.000 km&apos;de. Kritik seviyede — değiştirilmeli.
+                      </p>
+                    </div>
+
+                    {/* Quick actions */}
+                    <div className="grid grid-cols-2 gap-2 mt-4">
+                      <div className="bg-white rounded-lg p-2 border border-gray-200 text-center">
+                        <span className="text-xl">📸</span>
+                        <p className="text-[10px] font-medium text-gray-700 mt-1">Foto Ekle</p>
+                      </div>
+                      <div className="bg-white rounded-lg p-2 border border-gray-200 text-center">
+                        <span className="text-xl">🔍</span>
+                        <p className="text-[10px] font-medium text-gray-700 mt-1">Barkod</p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-sm font-medium text-white">AutoLog</p>
-                  <p className="text-xs mt-1">Uygulama Görseli</p>
                 </div>
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-200 rounded-full opacity-60 blur-xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary-200 rounded-full opacity-60 blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-violet-200 rounded-full opacity-60 blur-xl" />
             </div>
           </div>
         </div>

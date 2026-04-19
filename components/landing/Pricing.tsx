@@ -2,34 +2,92 @@
 
 import { useState } from 'react';
 
-const plans = [
+type PlanFeature =
+  | { label: string; included: true }
+  | { label: string; included: false }
+  | { label: string; note: string };
+
+interface Plan {
+  name: string;
+  priceMonthly: string;
+  priceYearly: string;
+  description: string;
+  sections: Array<{ title: string; features: PlanFeature[] }>;
+  cta: string;
+  highlighted: boolean;
+  badge?: string;
+}
+
+const plans: Plan[] = [
   {
     name: 'Ücretsiz',
     priceMonthly: '₺0',
     priceYearly: '₺0',
-    description: 'Küçük servisler için ideal başlangıç',
-    features: [
-      '5 müşteriye kadar',
-      '5 araca kadar',
-      'Ayda 15 servise kadar',
-      'QR kod erişimi',
+    description: 'Denemek için ideal başlangıç',
+    sections: [
+      {
+        title: 'Temel',
+        features: [
+          { label: '5 müşteri, 5 araç', included: true },
+          { label: 'Ayda 15 servis kaydı', included: true },
+          { label: 'QR kod ile müşteri erişimi', included: true },
+        ],
+      },
+      {
+        title: 'Medya',
+        features: [
+          { label: 'Servis başına 3 foto', included: true },
+          { label: '100 MB toplam depolama', included: true },
+          { label: 'Video kayıt', included: false },
+          { label: 'Fatura / hasar etiketleme', included: false },
+        ],
+      },
+      {
+        title: 'AI & Barkod',
+        features: [
+          { label: 'AI Usta Asistanı', included: false },
+          { label: 'Barkod okuma + ürün kataloğu', included: false },
+          { label: 'Araç sağlık raporu', included: false },
+        ],
+      },
     ],
-    cta: 'Ücretsiz Başlayın',
+    cta: 'Ücretsiz Başla',
     highlighted: false,
   },
   {
     name: 'Temel',
     priceMonthly: '₺399',
     priceYearly: '₺3.599',
-    description: 'Büyüyen servisler için',
-    features: [
-      '50 müşteriye kadar',
-      '50 araca kadar',
-      'Ayda 200 servise kadar',
-      'QR kod erişimi',
-      'Öncelikli destek',
+    description: 'Büyüyen atölyeler için',
+    sections: [
+      {
+        title: 'Temel',
+        features: [
+          { label: '50 müşteri, 50 araç', included: true },
+          { label: 'Ayda 200 servis kaydı', included: true },
+          { label: 'QR kod + özel katalog düzenleme', included: true },
+        ],
+      },
+      {
+        title: 'Medya',
+        features: [
+          { label: 'Servis başına 10 foto', included: true },
+          { label: '5 GB toplam depolama', included: true },
+          { label: '30 sn video kayıt', included: true },
+          { label: 'Fatura / hasar etiketleme', included: true },
+        ],
+      },
+      {
+        title: 'AI & Barkod',
+        features: [
+          { label: 'AI Hasar Tespiti · 10/ay', included: true },
+          { label: 'Araç sağlık raporu', included: true },
+          { label: 'Barkod + 100 ürün', included: true },
+          { label: 'AI teşhis önerisi (Diagnosis)', note: 'Premium' },
+        ],
+      },
     ],
-    cta: 'Hemen Başlayın',
+    cta: 'Hemen Başla',
     highlighted: true,
     badge: 'Popüler',
   },
@@ -37,14 +95,33 @@ const plans = [
     name: 'Premium',
     priceMonthly: '₺999',
     priceYearly: '₺8.999',
-    description: 'Büyük servisler için sınırsız',
-    features: [
-      'Sınırsız müşteri',
-      'Sınırsız araç',
-      'Sınırsız servis kaydı',
-      'QR kod erişimi',
-      'Öncelikli destek',
-      'Erken erişim',
+    description: 'Profesyonel atölyeler için sınırsız güç',
+    sections: [
+      {
+        title: 'Temel',
+        features: [
+          { label: 'Sınırsız müşteri, araç, servis', included: true },
+          { label: 'Öncelikli destek', included: true },
+        ],
+      },
+      {
+        title: 'Medya',
+        features: [
+          { label: 'Servis başına sınırsız foto', included: true },
+          { label: '50 GB toplam depolama', included: true },
+          { label: '2 dk video kayıt', included: true },
+          { label: 'Fatura/tarih watermark', included: true },
+        ],
+      },
+      {
+        title: 'AI & Barkod',
+        features: [
+          { label: 'AI Hasar Tespiti · 100/ay', included: true },
+          { label: 'AI Teşhis Önerisi · 50/ay', included: true },
+          { label: 'Sınırsız ürün + stok takibi', included: true },
+          { label: 'AI fatura OCR', included: true },
+        ],
+      },
     ],
     cta: 'Premium\'a Geç',
     highlighted: false,
@@ -58,11 +135,14 @@ export default function Pricing() {
     <section id="pricing" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <div className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 text-sm font-medium px-4 py-2 rounded-full mb-4">
             Fiyatlandırma
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Atölyene Göre Plan Seç
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            İşletmenizin büyüklüğüne göre plan seçin
+            Ücretsiz başla. İhtiyacın büyüdükçe yükselt. Her an iptal et.
           </p>
 
           {/* Toggle */}
@@ -128,7 +208,7 @@ export default function Pricing() {
                 </p>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-6 pb-6 border-b border-opacity-30 border-white/30">
                 <span
                   className={`text-4xl font-bold ${
                     plan.highlighted ? 'text-white' : 'text-gray-900'
@@ -145,34 +225,102 @@ export default function Pricing() {
                 </span>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <svg
-                      className={`w-4 h-4 flex-shrink-0 ${
-                        plan.highlighted ? 'text-primary-200' : 'text-primary-600'
+              <div className="space-y-5 mb-8">
+                {plan.sections.map((section, sIdx) => (
+                  <div key={sIdx}>
+                    <p
+                      className={`text-xs font-bold uppercase tracking-wider mb-2 ${
+                        plan.highlighted ? 'text-primary-200' : 'text-gray-400'
                       }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span
-                      className={
-                        plan.highlighted ? 'text-primary-100' : 'text-gray-600'
-                      }
-                    >
-                      {feature}
-                    </span>
-                  </li>
+                      {section.title}
+                    </p>
+                    <ul className="space-y-2">
+                      {section.features.map((f, fIdx) => {
+                        const isIncluded = 'included' in f && f.included;
+                        const isMissing = 'included' in f && !f.included;
+                        const hasNote = 'note' in f;
+                        return (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-2 text-sm"
+                          >
+                            {isIncluded && (
+                              <svg
+                                className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                                  plan.highlighted
+                                    ? 'text-emerald-300'
+                                    : 'text-emerald-600'
+                                }`}
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M5 13l4 4L19 7"
+                                />
+                              </svg>
+                            )}
+                            {isMissing && (
+                              <svg
+                                className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                                  plan.highlighted
+                                    ? 'text-primary-300 opacity-60'
+                                    : 'text-gray-300'
+                                }`}
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M6 18L18 6M6 6l12 12"
+                                />
+                              </svg>
+                            )}
+                            {hasNote && (
+                              <span className="text-amber-500 text-xs mt-0.5">
+                                ★
+                              </span>
+                            )}
+                            <span
+                              className={
+                                plan.highlighted
+                                  ? isIncluded
+                                    ? 'text-white'
+                                    : 'text-primary-200 line-through opacity-50'
+                                  : isIncluded
+                                  ? 'text-gray-700'
+                                  : isMissing
+                                  ? 'text-gray-400 line-through'
+                                  : 'text-gray-600'
+                              }
+                            >
+                              {f.label}
+                              {'note' in f && (
+                                <span
+                                  className={`ml-1 text-xs ${
+                                    plan.highlighted
+                                      ? 'text-amber-300'
+                                      : 'text-amber-600'
+                                  }`}
+                                >
+                                  ({f.note})
+                                </span>
+                              )}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               <a
                 href="#download"
@@ -189,7 +337,8 @@ export default function Pricing() {
         </div>
 
         <p className="text-center text-sm text-gray-500 mt-8">
-          Abonelikler App Store ve Google Play üzerinden yönetilmektedir.
+          Abonelikler App Store ve Google Play üzerinden yönetilmektedir. KDV dahildir.
+          İstediğiniz an mağazadan iptal edebilirsiniz.
         </p>
       </div>
     </section>

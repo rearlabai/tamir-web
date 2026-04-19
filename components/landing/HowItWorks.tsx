@@ -1,27 +1,31 @@
 const steps = [
   {
     number: '01',
-    title: 'Uygulamayı İndirin',
+    emoji: '📱',
+    title: 'Uygulamayı İndir, Servisini Kur',
     description:
-      'App Store veya Google Play\'den AutoLog uygulamasını ücretsiz indirin.',
+      'App Store veya Google Play\'den indirin. Atölye bilgilerinizi girin, saniyeler içinde hazır.',
   },
   {
     number: '02',
-    title: 'Servisinizi Kurun',
+    emoji: '🚗',
+    title: 'Aracı ve Müşteriyi Ekle',
     description:
-      'Oto servis bilgilerinizi girin, müşteri ve araç ekleyin.',
+      'Plaka, marka, model, şasi numarası. Otomobil, kamyon, motosiklet — hepsi desteklenir.',
   },
   {
     number: '03',
-    title: 'Servis Kayıtlarını Girin',
+    emoji: '🤖',
+    title: 'Usta Asistanı ile Çalış',
     description:
-      'Her servis için yapılan işlemleri, parçaları ve notları kaydedin.',
+      'Foto çek, AI teşhis etsin. Katalogdan işlemleri seç, barkodla parça ekle. AI önerilerini tek tık servise ekle.',
   },
   {
     number: '04',
-    title: 'QR ile Paylaşın',
+    emoji: '✅',
+    title: 'Kaydet ve Müşteriye Teslim Et',
     description:
-      'Müşteriniz QR kodu okutarak servis geçmişini anında görüntülesin.',
+      'Servisi kaydet. QR kodu müşterine ver — aracının tüm geçmişini görür. AI bir sonraki bakımı hatırlatır.',
   },
 ];
 
@@ -30,11 +34,15 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full mb-4">
+            Nasıl Çalışır
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Nasıl Çalışır?
+            4 Adımda Dijital Servise Geç
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            4 adımda servis takibini dijitalleştirin
+            Kağıt deftere veda. AI destekli, telefonunuzda çalışan profesyonel
+            servis yönetimi.
           </p>
         </div>
 
@@ -46,9 +54,14 @@ export default function HowItWorks() {
                 <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-primary-200 to-transparent z-0" />
               )}
 
-              <div className="relative z-10 text-center">
-                <div className="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {step.number}
+              <div className="relative z-10 text-center bg-white rounded-2xl p-6 border border-gray-100 h-full">
+                <div className="relative inline-block mb-4">
+                  <div className="w-16 h-16 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold">
+                    {step.number}
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-9 h-9 bg-white rounded-full border-2 border-primary-100 flex items-center justify-center text-xl shadow-sm">
+                    {step.emoji}
+                  </div>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">
                   {step.title}
@@ -59,6 +72,22 @@ export default function HowItWorks() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Benefit strip */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+          <div>
+            <p className="text-3xl font-bold text-primary-600">⏱️ ~%60</p>
+            <p className="text-sm text-gray-600 mt-1">Daha hızlı servis girişi</p>
+          </div>
+          <div>
+            <p className="text-3xl font-bold text-primary-600">🤖 AI</p>
+            <p className="text-sm text-gray-600 mt-1">Destekli teşhis & sağlık raporu</p>
+          </div>
+          <div>
+            <p className="text-3xl font-bold text-primary-600">📲 QR</p>
+            <p className="text-sm text-gray-600 mt-1">Müşteri memnuniyeti</p>
+          </div>
         </div>
       </div>
     </section>
