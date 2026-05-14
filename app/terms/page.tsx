@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'AutoLog uygulaması kullanım şartları ve hizmet koşulları.',
 };
 
-const CONTACT_EMAIL = 'support@rearlabai.com';
+const CONTACT_EMAIL = 'autolog@rearlabai.com';
 const LAST_UPDATED = '19 Nisan 2026';
 
 export default function TermsPage() {

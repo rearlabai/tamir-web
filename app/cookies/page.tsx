@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'AutoLog web sitesinde kullanılan çerezler ve benzer teknolojiler hakkında bilgi.',
 };
 
-const CONTACT_EMAIL = 'support@rearlabai.com';
+const CONTACT_EMAIL = 'autolog@rearlabai.com';
 const LAST_UPDATED = '19 Nisan 2026';
 
 export default function CookiesPage() {

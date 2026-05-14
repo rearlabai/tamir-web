@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     'AutoLog uygulaması gizlilik politikası ve KVKK kapsamında kişisel veri işleme bilgilendirmesi.',
 };
 
-const CONTACT_EMAIL = 'support@rearlabai.com';
+const CONTACT_EMAIL = 'autolog@rearlabai.com';
 const LAST_UPDATED = '19 Nisan 2026';
 
 export default function PrivacyPage() {

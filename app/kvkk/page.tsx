@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     '6698 sayılı KVKK kapsamında AutoLog uygulamasında kişisel verilerin işlenmesine ilişkin aydınlatma metni.',
 };
 
-const CONTACT_EMAIL = 'support@rearlabai.com';
+const CONTACT_EMAIL = 'autolog@rearlabai.com';
 const LAST_UPDATED = '19 Nisan 2026';
 
 export default function KvkkPage() {

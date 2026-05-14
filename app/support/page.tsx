@@ -38,10 +38,10 @@ export default function SupportPage() {
                 <div>
                   <p className="text-sm text-gray-500">E-posta</p>
                   <a
-                    href="mailto:destek@rearlab.ai"
+                    href="mailto:autolog@rearlabai.com"
                     className="font-medium text-primary-600 hover:text-primary-700"
                   >
-                    destek@rearlab.ai
+                    autolog@rearlabai.com
                   </a>
                 </div>
               </div>
