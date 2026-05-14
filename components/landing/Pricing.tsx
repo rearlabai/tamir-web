@@ -45,8 +45,8 @@ const plans: Plan[] = [
       {
         title: 'AI & Barkod',
         features: [
-          { label: 'AI Usta Asistanı', included: false },
-          { label: 'Barkod okuma + ürün kataloğu', included: false },
+          { label: 'AI Usta Asistanı · 5 kredi/ay', included: true },
+          { label: 'Barkod okuma', included: true },
           { label: 'Araç sağlık raporu', included: false },
         ],
       },
@@ -80,10 +80,10 @@ const plans: Plan[] = [
       {
         title: 'AI & Barkod',
         features: [
-          { label: 'AI Hasar Tespiti · 10/ay', included: true },
+          { label: 'AI Usta Asistanı · 100 kredi/ay', included: true },
           { label: 'Araç sağlık raporu', included: true },
-          { label: 'Barkod + 100 ürün', included: true },
-          { label: 'AI teşhis önerisi (Diagnosis)', note: 'Premium' },
+          { label: 'Barkod + 100 ürün kataloğu', included: true },
+          { label: 'AI teşhis önerisi', included: false },
         ],
       },
     ],
@@ -101,6 +101,7 @@ const plans: Plan[] = [
         title: 'Temel',
         features: [
           { label: 'Sınırsız müşteri, araç, servis', included: true },
+          { label: 'Stok takibi', included: true },
           { label: 'Öncelikli destek', included: true },
         ],
       },
@@ -110,20 +111,20 @@ const plans: Plan[] = [
           { label: 'Servis başına sınırsız foto', included: true },
           { label: '50 GB toplam depolama', included: true },
           { label: '2 dk video kayıt', included: true },
-          { label: 'Fatura/tarih watermark', included: true },
+          { label: 'Filigran (watermark) kaldırma', included: true },
         ],
       },
       {
         title: 'AI & Barkod',
         features: [
-          { label: 'AI Hasar Tespiti · 100/ay', included: true },
-          { label: 'AI Teşhis Önerisi · 50/ay', included: true },
+          { label: 'AI Usta Asistanı · 1.000 kredi/ay', included: true },
+          { label: 'AI Teşhis Önerisi (Claude Sonnet)', included: true },
           { label: 'Sınırsız ürün + stok takibi', included: true },
           { label: 'AI fatura OCR', included: true },
         ],
       },
     ],
-    cta: 'Premium\'a Geç',
+    cta: "Premium'a Geç",
     highlighted: false,
   },
 ];
