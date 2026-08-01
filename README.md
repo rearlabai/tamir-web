@@ -6,9 +6,9 @@ Oto servis takip uygulaması için profesyonel web sitesi. QR kod ile araç serv
 
 - ✅ Landing page (hero, features, pricing, FAQ)
 - ✅ QR vehicle public page (SSR with Supabase)
-- ✅ Güvenlik: CSP headers, rate limiting, UUID validation
+- ✅ Güvenlik: CSP headers, UUID validation, instance-bazlı kötüye kullanım sınırı
 - ✅ Responsive design (mobile-first)
-- ✅ Turkish + English i18n (ready for next-intl integration)
+- ✅ Türkçe arayüz (İngilizce yerelleştirme henüz bağlı değil)
 - ✅ SEO optimized with metadata
 - ✅ Legal pages (Privacy, Terms, Support)
 
@@ -25,6 +25,8 @@ cp .env.local.example .env.local
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 NEXT_PUBLIC_APP_URL=https://autolog.vercel.app
+NEXT_PUBLIC_APP_STORE_URL=https://apps.apple.com/app/your-app-id
+NEXT_PUBLIC_PLAY_STORE_URL=https://play.google.com/store/apps/details?id=your.package
 ```
 
 **Önemli:** Mobil uygulama ile aynı Supabase projesini kullan.
@@ -33,14 +35,12 @@ NEXT_PUBLIC_APP_URL=https://autolog.vercel.app
 
 Yeni RLS policy'lerini uygula:
 ```bash
-cd ../supabase
+cd ../tamir
 npx supabase db push
 ```
 
-veya Supabase Dashboard'dan:
-- **SQL Editor** > Yeni sorgu
-- `supabase/migrations/20260208_public_qr_access.sql` dosyasını yapıştır
-- Çalıştır
+Migration'ları dosya sırasıyla CLI üzerinden uygulayın. Dashboard'a tek bir eski
+migration kopyalamak güncel güvenlik değişikliklerini atlayabilir.
 
 ### 3. Bağımlılıkları Yükle
 
@@ -61,8 +61,8 @@ http://localhost:3000 adresinde açılacak.
 ### 1. GitHub'a Push
 
 ```bash
-git add autolog-web/
-git commit -m "Add autolog-web Next.js project"
+git add .
+git commit -m "chore(web): prepare production configuration"
 git push
 ```
 
@@ -70,11 +70,13 @@ git push
 
 1. https://vercel.com adresine git
 2. **Import Project** > GitHub repo seç
-3. **Root Directory** değiştir: `autolog-web`
+3. Monorepo kullanılıyorsa **Root Directory** değerini `tamir-web` yap
 4. **Environment Variables** ekle:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `NEXT_PUBLIC_APP_URL`
+   - `NEXT_PUBLIC_APP_STORE_URL`
+   - `NEXT_PUBLIC_PLAY_STORE_URL`
 5. **Deploy** tıkla
 
 ### 3. Domain Bağla
@@ -95,9 +97,10 @@ Vercel Dashboard:
    - Referrer-Policy: strict-origin-when-cross-origin
    - Strict-Transport-Security (HSTS)
 
-2. **Rate Limiting** (middleware.ts)
+2. **Kötüye Kullanım Sınırı** (middleware.ts)
    - `/vehicle/*` routes: 60 requests/minute per IP
    - Other routes: 200 requests/minute per IP
+   - Bu sayaç instance-bazlıdır; dağıtık/global rate limit garantisi vermez
 
 3. **Input Validation**
    - UUID v4 format validation (regex)
@@ -116,10 +119,12 @@ Vercel Dashboard:
 ## Proje Yapısı
 
 ```
-autolog-web/
+tamir-web/
 ├── app/                          # Next.js App Router
 │   ├── layout.tsx                # Root layout + metadata
 │   ├── page.tsx                  # Landing page
+│   ├── robots.ts                 # Crawler policy
+│   ├── sitemap.ts                # Public marketing routes
 │   ├── vehicle/[uuid]/page.tsx   # QR public page (SSR)
 │   ├── privacy/page.tsx          # Gizlilik Politikası
 │   ├── terms/page.tsx            # Kullanım Koşulları
@@ -133,7 +138,7 @@ autolog-web/
 │   ├── validations/uuid.ts       # UUID validation
 │   └── utils/format.ts           # Formatters
 ├── types/index.ts                # TypeScript types
-├── messages/                     # i18n translations
+├── messages/                     # Gelecekteki i18n çevirileri
 ├── middleware.ts                 # Rate limiting + HTTPS
 └── next.config.ts                # Security headers
 ```
@@ -171,9 +176,9 @@ Beklenen:
 - `x-frame-options: DENY`
 - `x-content-type-options: nosniff`
 
-### Rate Limit Test
+### Instance Abuse Guard Test
 ```bash
-# 60+ requests in 1 minute should return 429
+# Aynı çalışan instance üzerinde 60+ istek 429 döndürmeli
 for i in {1..65}; do curl http://localhost:3000/vehicle/test; done
 ```
 
@@ -195,14 +200,15 @@ for i in {1..65}; do curl http://localhost:3000/vehicle/test; done
 
 ## Production Checklist
 
-- [ ] Supabase migration uygulandı (`20260208_public_qr_access.sql`)
+- [ ] Tüm Supabase migration'ları sıra ile uygulandı
 - [ ] Environment variables Vercel'de set edildi
+- [ ] Gerçek App Store / Play Store URL'leri set edildi
 - [ ] Domain (autolog.vercel.app) bağlandı
 - [ ] Security headers test edildi (securityheaders.com)
 - [ ] QR page test edildi (valid + invalid UUID)
-- [ ] Rate limiting test edildi
+- [ ] Instance abuse guard test edildi; gerekiyorsa dağıtık rate limiter planlandı
 - [ ] Mobile app QR URL güncellendi
-- [ ] Analytics/monitoring eklendi (optional)
+- [ ] Analytics ve hata izleme eklendi
 
 ## Lisans
 

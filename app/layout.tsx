@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { env } from '@/lib/env';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   keywords: ['oto servis', 'araç bakım', 'servis takip', 'qr kod', 'autolog'],
   authors: [{ name: 'AutoLog' }],
   creator: 'AutoLog',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://autolog.vercel.app'),
+  metadataBase: new URL(env.appUrl),
   openGraph: {
     type: 'website',
     locale: 'tr_TR',

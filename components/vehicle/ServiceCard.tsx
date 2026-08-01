@@ -14,6 +14,22 @@ const statusConfig: Record<string, { label: string; className: string }> = {
     label: 'Devam Ediyor',
     className: 'bg-blue-100 text-blue-800',
   },
+  INSPECTING: {
+    label: 'İnceleniyor',
+    className: 'bg-sky-100 text-sky-800',
+  },
+  WAITING_APPROVAL: {
+    label: 'Onay Bekliyor',
+    className: 'bg-orange-100 text-orange-800',
+  },
+  READY: {
+    label: 'Teslime Hazır',
+    className: 'bg-violet-100 text-violet-800',
+  },
+  DELIVERED: {
+    label: 'Teslim Edildi',
+    className: 'bg-emerald-100 text-emerald-800',
+  },
   COMPLETED: {
     label: 'Tamamlandı',
     className: 'bg-green-100 text-green-800',

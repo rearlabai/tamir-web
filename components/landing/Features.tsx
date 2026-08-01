@@ -4,7 +4,7 @@ const features = [
     color: 'violet',
     title: 'AI Usta Asistanı',
     description:
-      'Her araca özel AI destekli chat. Foto çek, sor — teşhis, hasar tespiti, parça tanıma saniyeler içinde.',
+      'Her araca özel AI destekli chat. Fotoğrafla hasar incelemesi, teşhis önerisi ve parça uyum kontrolü.',
   },
   {
     emoji: '📊',
@@ -81,7 +81,7 @@ export default function Features() {
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Kağıt defter, WhatsApp mesajları, karışık not kağıtları — hepsini
-            tek uygulamada topla. AI, foto, video, barkod ve daha fazlası.
+            tek uygulamada topla. İş emri, ödeme, fotoğraf, barkod ve AI desteği.
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export default function Features() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-300 mt-0.5">✓</span>
-                  Fatura fotoğrafından kalem çıkarma (OCR)
+                  Parça–araç uyum kontrolü
                 </li>
               </ul>
             </div>

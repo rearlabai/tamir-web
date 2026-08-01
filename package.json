@@ -6,13 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --max-warnings=0",
+    "type-check": "tsc --noEmit --incremental false",
+    "validate": "npm run lint && npm run type-check && npm run build"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.49.1",
     "next": "^15.1.6",
-    "next-intl": "^3.26.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

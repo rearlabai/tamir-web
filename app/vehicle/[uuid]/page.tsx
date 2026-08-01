@@ -32,7 +32,7 @@ interface PublicPagePayload {
     qr_uuid: string;
     created_at: string;
   };
-  customer: { full_name: string; phone_number: string } | null;
+  customer: null;
   shop: { id: string; name: string; phone: string } | null;
   services: Array<{
     id: string;
@@ -108,9 +108,7 @@ export default async function VehiclePage({ params }: PageProps) {
     trim_name: payload.vehicle.trim_name,
     qr_uuid: payload.vehicle.qr_uuid,
     created_at: payload.vehicle.created_at,
-    customer: payload.customer
-      ? { full_name: payload.customer.full_name, phone_number: payload.customer.phone_number }
-      : undefined,
+    customer: undefined,
     shop: payload.shop
       ? { id: payload.shop.id, name: payload.shop.name, phone_number: payload.shop.phone, address: null }
       : undefined,

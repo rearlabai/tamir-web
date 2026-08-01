@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { env } from '@/lib/env';
 
-// Simple in-memory rate limiter (Vercel Edge compatible)
+// Best-effort, per-instance abuse guard. This is not a distributed rate limiter.
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 
 const RATE_LIMITS = {
@@ -53,7 +54,7 @@ export function middleware(request: NextRequest) {
 
   // Force HTTPS in production
   if (
-    process.env.NODE_ENV === 'production' &&
+    env.isProduction &&
     request.headers.get('x-forwarded-proto') === 'http'
   ) {
     return NextResponse.redirect(

@@ -39,7 +39,15 @@ export interface ServiceTicket {
   id: string;
   vehicle_id: string;
   shop_id: string;
-  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+  status:
+    | 'PENDING'
+    | 'INSPECTING'
+    | 'WAITING_APPROVAL'
+    | 'IN_PROGRESS'
+    | 'READY'
+    | 'DELIVERED'
+    | 'COMPLETED'
+    | 'CANCELLED';
   current_km: number;
   customer_complaint: string | null;
   diagnosis_notes: string | null;
