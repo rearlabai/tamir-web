@@ -58,6 +58,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/account-deletion" className="hover:text-white transition-colors">
+                  Hesap ve Veri Silme
+                </Link>
+              </li>
+              <li>
                 <Link href="/terms" className="hover:text-white transition-colors">
                   Kullanım Şartları
                 </Link>

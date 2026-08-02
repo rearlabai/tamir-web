@@ -1,7 +1,15 @@
 import type { MetadataRoute } from 'next';
 import { env } from '@/lib/env';
 
-const publicRoutes = ['', '/cookies', '/kvkk', '/privacy', '/support', '/terms'];
+const publicRoutes = [
+  '',
+  '/account-deletion',
+  '/cookies',
+  '/kvkk',
+  '/privacy',
+  '/support',
+  '/terms',
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

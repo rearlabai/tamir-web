@@ -210,7 +210,15 @@ export default function PrivacyPage() {
                 <li>AI etkileşim kayıtları: 12 ay; ardından özet olarak saklanabilir</li>
                 <li>Hata kayıtları: 90 gün</li>
                 <li>Yasal zorunlulukla saklanması gereken faturalar: 10 yıl (VUK)</li>
+                <li>Hesap silme talebinden sonra yedeklerdeki kopyalar: en fazla 90 gün</li>
               </ul>
+              <p className="mt-3 text-gray-600">
+                Hesap silme veya belirli verilerin silinmesi talebi için{' '}
+                <Link href="/account-deletion" className="text-primary-600 hover:text-primary-700">
+                  Hesap ve Veri Silme sayfamızı
+                </Link>{' '}
+                kullanabilirsiniz.
+              </p>
             </section>
 
             <section>
