@@ -77,15 +77,15 @@
       },
       "basic": {
         "name": "Temel",
-        "priceMonthly": "₺399",
-        "priceYearly": "₺3.599",
+        "priceMonthly": "{{priceMonthly}}",
+        "priceYearly": "{{priceYearly}}",
         "description": "Büyüyen servisler için",
         "features": ["50 müşteriye kadar", "50 araca kadar", "Ayda 200 servise kadar", "QR kod erişimi", "Öncelikli destek"]
       },
       "premium": {
         "name": "Premium",
-        "priceMonthly": "₺999",
-        "priceYearly": "₺8.999",
+        "priceMonthly": "{{priceMonthly}}",
+        "priceYearly": "{{priceYearly}}",
         "description": "Büyük servisler için sınırsız",
         "features": ["Sınırsız müşteri", "Sınırsız araç", "Sınırsız servis kaydı", "QR kod erişimi", "Öncelikli destek", "Erken erişim"]
       }

@@ -5,8 +5,10 @@ import Features from '@/components/landing/Features';
 import HowItWorks from '@/components/landing/HowItWorks';
 import Pricing from '@/components/landing/Pricing';
 import CTASection from '@/components/landing/CTASection';
+import { getPublishedBillingPlans } from '@/lib/billing-catalog';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const plans = await getPublishedBillingPlans();
   return (
     <>
       <Header />
@@ -14,7 +16,7 @@ export default function HomePage() {
         <Hero />
         <Features />
         <HowItWorks />
-        <Pricing />
+        <Pricing plans={plans} />
         <CTASection />
       </main>
       <Footer />

@@ -77,15 +77,15 @@
       },
       "basic": {
         "name": "Basic",
-        "priceMonthly": "₺399",
-        "priceYearly": "₺3,599",
+        "priceMonthly": "{{priceMonthly}}",
+        "priceYearly": "{{priceYearly}}",
         "description": "For growing shops",
         "features": ["Up to 50 customers", "Up to 50 vehicles", "Up to 200 services/month", "QR code access", "Priority support"]
       },
       "premium": {
         "name": "Premium",
-        "priceMonthly": "₺999",
-        "priceYearly": "₺8,999",
+        "priceMonthly": "{{priceMonthly}}",
+        "priceYearly": "{{priceYearly}}",
         "description": "Unlimited for large shops",
         "features": ["Unlimited customers", "Unlimited vehicles", "Unlimited service records", "QR code access", "Priority support", "Early access"]
       }
