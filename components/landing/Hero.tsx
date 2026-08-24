@@ -1,142 +1,75 @@
 import Link from 'next/link';
+import { ArrowRight, BadgeCheck, BrainCircuit, Camera, ClipboardCheck, ScanLine, Wrench } from 'lucide-react';
 import { storeLinks } from '@/lib/store-links';
+
+const proofPoints = [
+  { icon: BrainCircuit, label: 'Akıllı teşhis' },
+  { icon: Camera, label: 'Görsel servis kaydı' },
+  { icon: ScanLine, label: 'Barkodla hızlı giriş' },
+];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-secondary-50 pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div>
-            <div className="inline-flex items-center gap-2 bg-primary-100 text-primary-700 text-sm font-medium px-4 py-2 rounded-full mb-6">
-              <span className="w-2 h-2 bg-primary-600 rounded-full animate-pulse" />
-              Sanayi ustaları için dijital servis defteri
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Kâğıt defteri bırak,{' '}
-              <span className="text-primary-600">servisini tek yerden yönet</span>
-            </h1>
-
-            <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Müşteri, araç, iş emri, parça, tahsilat ve bakım hatırlatmaları
-              tek uygulamada. İhtiyaç olduğunda fotoğraf destekli AI asistan da
-              servis geçmişini dikkate alır.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-8">
-              <span className="inline-flex items-center gap-1.5 bg-violet-50 text-violet-700 text-xs font-medium px-3 py-1.5 rounded-full border border-violet-200">
-                🤖 AI Usta Asistanı
-              </span>
-              <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-medium px-3 py-1.5 rounded-full border border-emerald-200">
-                📸 Foto & Video Kayıt
-              </span>
-              <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 text-xs font-medium px-3 py-1.5 rounded-full border border-amber-200">
-                📊 Araç Sağlık Raporu
-              </span>
-              <span className="inline-flex items-center gap-1.5 bg-sky-50 text-sky-700 text-xs font-medium px-3 py-1.5 rounded-full border border-sky-200">
-                🔍 Barkod Okuma
-              </span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4" id="download">
-              <Link
-                href={storeLinks.ios.href}
-                className="inline-flex items-center justify-center gap-3 px-6 py-3 bg-gray-900 text-white font-medium rounded-xl hover:bg-gray-800 transition-colors"
-              >
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                </svg>
-                {storeLinks.ios.label}
-              </Link>
-              <Link
-                href={storeLinks.android.href}
-                className="inline-flex items-center justify-center gap-3 px-6 py-3 bg-primary-600 text-white font-medium rounded-xl hover:bg-primary-700 transition-colors"
-              >
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3.18 23.76c.37.2.8.2 1.18.01l12.93-7.46-2.79-2.79-11.32 10.24zm-1.76-21.4C1.16 2.72 1 3.18 1 3.7v16.6c0 .52.16.98.42 1.34l.06.06 9.3-9.3v-.22L1.42 2.3zm19.44 8.66l-2.59-1.5-3.07 3.07 3.07 3.07 2.61-1.51c.74-.43.74-1.12-.02-1.63zM4.36.24L17.29 7.7 14.5 10.5 3.18.26C3.56.07 4 .07 4.36.24z" />
-                </svg>
-                {storeLinks.android.label}
-              </Link>
-            </div>
-
-            <p className="text-sm text-gray-500 mt-4">
-              Ücretsiz başla. Kart bilgisi gerekmez.
-            </p>
+    <section className="relative isolate overflow-hidden bg-slate-950 pb-16 pt-28 text-white sm:pb-24 sm:pt-36">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_20%,rgba(14,165,233,.24),transparent_28%),radial-gradient(circle_at_25%_65%,rgba(99,102,241,.18),transparent_32%)]" />
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+        <div>
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-sm text-sky-100 backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            Oto servisler için operasyon yazılımı
           </div>
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
+            Servis operasyonunuzu{' '}
+            <span className="text-sky-300">kontrol altına alın.</span>
+          </h1>
+          <p className="mt-7 max-w-xl text-lg leading-8 text-slate-300">
+            Müşteri, araç, iş emri, parça ve tahsilat süreçleri tek, hızlı ve güvenilir bir iş akışında.
+            Usta karar verir; AutoLog düzeni korur.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {proofPoints.map(({ icon: Icon, label }) => (
+              <span key={label} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-200">
+                <Icon size={16} className="text-sky-300" aria-hidden="true" />
+                {label}
+              </span>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row" id="download">
+            <Link href={storeLinks.android.href} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-sky-400 px-5 py-3 font-semibold text-slate-950 transition hover:bg-sky-300">
+              {storeLinks.android.label}<ArrowRight size={18} aria-hidden="true" />
+            </Link>
+            <Link href={storeLinks.ios.href} className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-3 font-semibold text-white transition hover:bg-white/10">
+              {storeLinks.ios.label}
+            </Link>
+          </div>
+          <p className="mt-4 text-sm text-slate-400">Ücretsiz başla · Kart bilgisi gerekmez</p>
+        </div>
 
-          {/* App mockup */}
-          <div className="hidden lg:flex items-center justify-center">
-            <div className="relative">
-              {/* Phone frame */}
-              <div className="w-72 h-[580px] bg-gray-900 rounded-[40px] shadow-2xl p-3">
-                <div className="w-full h-full bg-gradient-to-br from-primary-50 to-white rounded-[32px] overflow-hidden relative">
-                  {/* Mock content */}
-                  <div className="p-5 pt-8">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <p className="text-xs text-gray-500">34 ABC 123</p>
-                        <p className="font-bold text-gray-900">Ford Focus 1.6</p>
-                      </div>
-                      <div className="w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xl">🤖</span>
-                      </div>
-                    </div>
-
-                    {/* Health card */}
-                    <div className="bg-amber-50 border-l-4 border-amber-500 rounded-xl p-3 mb-3">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-amber-700 text-xs font-bold">⚠️ DİKKAT</span>
-                        <span className="text-[10px] text-amber-600">AI Sağlık Raporu</span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-1 text-center text-xs">
-                        <div>
-                          <p className="font-bold text-red-600">2</p>
-                          <p className="text-[9px] text-gray-500">Sorun</p>
-                        </div>
-                        <div>
-                          <p className="font-bold text-blue-600">1</p>
-                          <p className="text-[9px] text-gray-500">Yaklaşan</p>
-                        </div>
-                        <div>
-                          <p className="font-bold text-gray-700">12</p>
-                          <p className="text-[9px] text-gray-500">Servis</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Chat bubble */}
-                    <div className="bg-violet-50 rounded-xl p-3 mb-3">
-                      <div className="flex items-center gap-1 mb-1">
-                        <span className="text-violet-700 text-[10px] font-bold">🤖 Usta AI</span>
-                      </div>
-                      <p className="text-xs text-gray-700 leading-relaxed">
-                        Fotoğrafta triger kayışı aşınma tespit ettim. Son değişim
-                        125.000 km&apos;de. Kritik seviyede — değiştirilmeli.
-                      </p>
-                    </div>
-
-                    {/* Quick actions */}
-                    <div className="grid grid-cols-2 gap-2 mt-4">
-                      <div className="bg-white rounded-lg p-2 border border-gray-200 text-center">
-                        <span className="text-xl">📸</span>
-                        <p className="text-[10px] font-medium text-gray-700 mt-1">Foto Ekle</p>
-                      </div>
-                      <div className="bg-white rounded-lg p-2 border border-gray-200 text-center">
-                        <span className="text-xl">🔍</span>
-                        <p className="text-[10px] font-medium text-gray-700 mt-1">Barkod</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div className="relative mx-auto w-full max-w-lg">
+          <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-sky-400/20 blur-3xl" />
+          <div className="rounded-[2rem] border border-white/15 bg-slate-900/85 p-3 shadow-2xl shadow-black/40 backdrop-blur">
+            <div className="rounded-[1.5rem] bg-slate-50 p-5 text-slate-900 sm:p-6">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-5">
+                <div className="flex items-center gap-3"><div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-950 text-white"><Wrench size={19} /></div><div><p className="text-xs text-slate-500">Aktif iş emri</p><p className="font-semibold">34 ABC 123 · Ford Focus</p></div></div>
+                <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">Teslim bekliyor</span>
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-200 rounded-full opacity-60 blur-xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-violet-200 rounded-full opacity-60 blur-xl" />
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <Metric label="Açık iş" value="12" /><Metric label="Bugün" value="₺18.450" /><Metric label="Hatırlatma" value="8" />
+              </div>
+              <div className="mt-5 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <div className="flex items-center gap-2 text-sm font-semibold"><BrainCircuit size={18} className="text-indigo-600" />İş emri özeti</div>
+                <p className="mt-3 text-sm leading-6 text-slate-600">Triger seti ve devirdaim değişimi için parça ve işçilik kalemleri hazır. Sonraki bakım önerisi kayda eklendi.</p>
+                <div className="mt-4 flex items-center justify-between"><span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700"><BadgeCheck size={15} /> Kayıt tamam</span><span className="text-xs font-medium text-slate-500">2 dk önce</span></div>
+              </div>
+              <div className="mt-4 flex items-center gap-3 rounded-xl bg-slate-950 px-4 py-3 text-sm text-white"><ClipboardCheck size={18} className="text-sky-300" /> Her işlem, araç geçmişinde izlenebilir.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return <div className="rounded-xl bg-slate-100 p-3"><p className="text-xs text-slate-500">{label}</p><p className="mt-1 text-lg font-semibold tracking-tight">{value}</p></div>;
 }

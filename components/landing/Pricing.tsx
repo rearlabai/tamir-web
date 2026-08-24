@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { Check } from 'lucide-react';
 import type { PublishedBillingPlan } from '@/lib/billing-catalog';
 
 interface PricingProps {
@@ -51,7 +52,7 @@ export default function Pricing({ plans }: PricingProps) {
                 <span className={`ml-1 text-sm ${plan.isPopular ? 'text-primary-200' : 'text-gray-500'}`}>{isYearly ? '/yıl' : '/ay'}</span>
               </div>
               <ul className="mb-8 space-y-3">
-                {plan.features.map((feature) => <li key={feature} className="flex gap-2 text-sm"><span aria-hidden="true">✓</span>{feature}</li>)}
+                {plan.features.map((feature) => <li key={feature} className="flex gap-2 text-sm"><Check size={16} className="mt-0.5 shrink-0" aria-hidden="true" />{feature}</li>)}
               </ul>
               <a href="#download" className={`block rounded-xl px-6 py-3 text-center font-medium ${plan.isPopular ? 'bg-white text-primary-600' : 'bg-primary-600 text-white'}`}>
                 {plan.planCode === 'FREE' ? 'Ücretsiz Başla' : 'Uygulamada İncele'}

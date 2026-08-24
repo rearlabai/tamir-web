@@ -1,97 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { Menu, Wrench, X } from 'lucide-react';
 import { useState } from 'react';
+
+const links = [['#features', 'Ürün'], ['#how-it-works', 'Nasıl çalışır'], ['#pricing', 'Fiyatlandırma']] as const;
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">T</span>
-            </div>
-            <span className="font-bold text-xl text-gray-900">AutoLog</span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="#features"
-              className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
-            >
-              Özellikler
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
-            >
-              Nasıl Çalışır
-            </Link>
-            <Link
-              href="#pricing"
-              className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium"
-            >
-              Fiyatlandırma
-            </Link>
-          </nav>
-
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="#download"
-              className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors"
-            >
-              Ücretsiz Başlayın
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menü"
-          >
-            {menuOpen ? (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
-            <nav className="flex flex-col gap-4">
-              <Link href="#features" className="text-gray-600 hover:text-gray-900 text-sm font-medium" onClick={() => setMenuOpen(false)}>
-                Özellikler
-              </Link>
-              <Link href="#how-it-works" className="text-gray-600 hover:text-gray-900 text-sm font-medium" onClick={() => setMenuOpen(false)}>
-                Nasıl Çalışır
-              </Link>
-              <Link href="#pricing" className="text-gray-600 hover:text-gray-900 text-sm font-medium" onClick={() => setMenuOpen(false)}>
-                Fiyatlandırma
-              </Link>
-              <Link
-                href="#download"
-                className="inline-flex items-center justify-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                Ücretsiz Başlayın
-              </Link>
-            </nav>
-          </div>
-        )}
-      </div>
-    </header>
-  );
+  return <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/80 text-white backdrop-blur-xl"><div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-5 lg:px-8"><Link href="/" className="flex items-center gap-2 font-semibold tracking-tight"><span className="grid h-9 w-9 place-items-center rounded-xl bg-sky-400 text-slate-950"><Wrench size={19} /></span><span>AutoLog</span></Link><nav className="hidden items-center gap-7 md:flex">{links.map(([href, label]) => <Link key={href} href={href} className="text-sm text-slate-300 transition hover:text-white">{label}</Link>)}</nav><Link href="#download" className="hidden rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-100 md:inline-flex">Uygulamayı indir</Link><button className="grid h-10 w-10 place-items-center rounded-lg text-white md:hidden" aria-label="Menüyü aç" aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}>{menuOpen ? <X size={21} /> : <Menu size={21} />}</button></div>{menuOpen && <nav className="border-t border-white/10 px-5 py-4 md:hidden">{links.map(([href, label]) => <Link key={href} href={href} onClick={() => setMenuOpen(false)} className="block py-3 text-sm text-slate-200">{label}</Link>)}<Link href="#download" onClick={() => setMenuOpen(false)} className="mt-2 block rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-slate-950">Uygulamayı indir</Link></nav>}</header>;
 }
