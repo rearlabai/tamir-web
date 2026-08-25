@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   keywords: ['oto servis', 'araç bakım', 'servis takip', 'qr kod', 'autolog'],
   authors: [{ name: 'AutoLog' }],
   creator: 'AutoLog',
+  icons: {
+    apple: '/autolog-app-icon.png',
+    icon: '/autolog-app-icon.png',
+  },
   metadataBase: new URL(env.appUrl),
   openGraph: {
     type: 'website',

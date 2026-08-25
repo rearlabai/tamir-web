@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { ArrowRight, BadgeCheck, BrainCircuit, Camera, ClipboardCheck, ScanLine, Wrench } from 'lucide-react';
+import { ArrowRight, BadgeCheck, BrainCircuit, Camera, ClipboardCheck, ScanLine } from 'lucide-react';
 import { storeLinks } from '@/lib/store-links';
+import BrandMark from '@/components/shared/BrandMark';
 
 const proofPoints = [
   { icon: BrainCircuit, label: 'Akıllı teşhis' },
@@ -50,7 +51,7 @@ export default function Hero() {
           <div className="rounded-[2rem] border border-white/15 bg-slate-900/85 p-3 shadow-2xl shadow-black/40 backdrop-blur">
             <div className="rounded-[1.5rem] bg-slate-50 p-5 text-slate-900 sm:p-6">
               <div className="flex items-center justify-between border-b border-slate-200 pb-5">
-                <div className="flex items-center gap-3"><div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-950 text-white"><Wrench size={19} /></div><div><p className="text-xs text-slate-500">Aktif iş emri</p><p className="font-semibold">34 ABC 123 · Ford Focus</p></div></div>
+                <div className="flex items-center gap-3"><BrandMark size={40} /><div><p className="text-xs text-slate-500">Aktif iş emri</p><p className="font-semibold">34 ABC 123 · Ford Focus</p></div></div>
                 <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">Teslim bekliyor</span>
               </div>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
