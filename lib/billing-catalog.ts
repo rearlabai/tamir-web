@@ -34,7 +34,10 @@ export async function getPublishedBillingPlans(): Promise<PublishedBillingPlan[]
     .eq('is_active', true)
     .order('price_minor', { ascending: true });
 
-  if (error) return [];
+  if (error) {
+    console.error('[billing-catalog] published catalog unavailable', { code: error.code, status: error.message === 'Invalid API key' ? 'invalid_api_key' : 'query_failed' });
+    return [];
+  }
   return (data as unknown as BillingCatalogRow[]).map(toPublishedPlan);
 }
 
