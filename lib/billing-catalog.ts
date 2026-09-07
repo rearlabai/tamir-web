@@ -26,64 +26,6 @@ interface BillingCatalogRow {
   is_popular: boolean;
 }
 
-const fallbackPlans: PublishedBillingPlan[] = [
-  {
-    id: 'fallback-free-monthly',
-    planCode: 'FREE',
-    billingPeriod: 'MONTHLY',
-    currencyCode: 'TRY',
-    priceMinor: 0,
-    displayName: 'Ücretsiz',
-    description: 'Denemek için ideal başlangıç',
-    features: ['5 müşteri · 5 araç · ayda 15 servis', '100 MB depolama · servis başına 5 foto', '5 AI sorgusu / ay'],
-    isPopular: false,
-  },
-  {
-    id: 'fallback-basic-monthly',
-    planCode: 'BASIC',
-    billingPeriod: 'MONTHLY',
-    currencyCode: 'TRY',
-    priceMinor: 39_900,
-    displayName: 'Temel',
-    description: 'Büyüyen atölyeler için',
-    features: ['50 müşteri · 50 araç · ayda 200 servis', '5 GB depolama · servis başına 10 foto', '100 AI sorgusu / ay'],
-    isPopular: true,
-  },
-  {
-    id: 'fallback-premium-monthly',
-    planCode: 'PREMIUM',
-    billingPeriod: 'MONTHLY',
-    currencyCode: 'TRY',
-    priceMinor: 99_900,
-    displayName: 'Premium',
-    description: 'Profesyonel atölyeler için sınırsız güç',
-    features: ['Sınırsız müşteri · araç · servis', '50 GB depolama · sınırsız foto', '1.000 AI sorgusu / ay'],
-    isPopular: false,
-  },
-  {
-    id: 'fallback-basic-annual',
-    planCode: 'BASIC',
-    billingPeriod: 'ANNUAL',
-    currencyCode: 'TRY',
-    priceMinor: 359_900,
-    displayName: 'Temel',
-    description: 'Büyüyen atölyeler için',
-    features: ['50 müşteri · 50 araç · ayda 200 servis', '5 GB depolama · servis başına 10 foto', '100 AI sorgusu / ay'],
-    isPopular: false,
-  },
-  {
-    id: 'fallback-premium-annual',
-    planCode: 'PREMIUM',
-    billingPeriod: 'ANNUAL',
-    currencyCode: 'TRY',
-    priceMinor: 899_900,
-    displayName: 'Premium',
-    description: 'Profesyonel atölyeler için sınırsız güç',
-    features: ['Sınırsız müşteri · araç · servis', '50 GB depolama · sınırsız foto', '1.000 AI sorgusu / ay'],
-    isPopular: false,
-  },
-];
-
 export async function getPublishedBillingPlans(): Promise<PublishedBillingPlan[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -92,7 +34,10 @@ export async function getPublishedBillingPlans(): Promise<PublishedBillingPlan[]
     .eq('is_active', true)
     .order('price_minor', { ascending: true });
 
-  if (error) return fallbackPlans;
+  if (error) {
+    console.error('[billing-catalog] published catalog unavailable', { code: error.code, status: error.message === 'Invalid API key' ? 'invalid_api_key' : 'query_failed' });
+    return [];
+  }
   return (data as unknown as BillingCatalogRow[]).map(toPublishedPlan);
 }
 

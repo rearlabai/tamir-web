@@ -41,6 +41,12 @@ export default function Pricing({ plans }: PricingProps) {
             </button>
           </div>
         </div>
+        {visiblePlans.length === 0 && (
+          <p role="status" className="text-center text-gray-600">
+            Plan bilgileri şu anda yüklenemiyor. Lütfen daha sonra tekrar deneyin veya{' '}
+            <a href="/support" className="underline">destek ekibimize ulaşın</a>.
+          </p>
+        )}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {visiblePlans.map((plan) => (
             <article key={plan.id} className={`relative rounded-2xl p-8 ${plan.isPopular ? 'scale-105 bg-primary-600 text-white shadow-2xl' : 'border border-gray-200 bg-white'}`}>
